@@ -1,3 +1,5 @@
+// O(n*m) Time and Space
+
 function levenshteinDistance(str1, str2) {
 	let twoDArray = [];
 	for (let i = 0; i < str1.length + 1; i++) {
