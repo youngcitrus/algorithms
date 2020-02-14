@@ -19,5 +19,5 @@ class Node {
           }
           return array;
     }
-}
+} 
 
