@@ -1,5 +1,5 @@
 function minNumberOfCoinsForChange(n, denoms) {
-// Write your code here.
+    // Write your code here.
     const numOfCoins = new Array(n+1).fill(Infinity);
     numOfCoins[0] = 0;
     for (let i=0; i<denoms.length; i++){
