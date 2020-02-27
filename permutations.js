@@ -13,5 +13,5 @@ function getPermutations(array) {
     return results.sort();
 }
 
-const test = [1,2,3];
+const test = [1,2,3,4];
 console.log(getPermutations(test));
