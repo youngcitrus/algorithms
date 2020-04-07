@@ -20,17 +20,29 @@
 // stepper([3, 1, 0, 5, 10]);           // => true, because we can step through elements 3 -> 5 -> 10
 // stepper([3, 4, 1, 0, 10]);           // => true, because we can step through elements 3 -> 4 -> 10
 // stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the end
-function stepper(nums) {
-    let table = new Array(nums.length).fill(false);
-    table[0] = true;
-    for (let i = 0; i < table.length; i++) {
-        if (table[i]) {
-            for (let j = 1; j <= nums[i] && i + j < table.length; j++) {
-                table[i + j] = true;
-            }
+function stepper(nums, memo = {}) {
+    // let table = new Array(nums.length).fill(false);
+    // table[0] = true;
+    // for (let i = 0; i < table.length; i++) {
+    //     if (table[i]) {
+    //         for (let j = 1; j <= nums[i] && i + j < table.length; j++) {
+    //             table[i + j] = true;
+    //         }
+    //     }
+    // }
+    // return table[table.length - 1];
+    if (nums.length === 0) return true;
+    if (nums.length in memo) return memo[nums.length];
+    
+    let maxRange = nums[0];
+    for (let i=1; i<=maxRange; i++){
+        if (stepper(nums.slice(i), memo)) {
+            memo[nums.length] = true;
+            return true;
         }
     }
-    return table[table.length - 1];
+    memo[nums.length] = false;
+    return false;
 }
 
 
@@ -44,15 +56,27 @@ function stepper(nums) {
 //
 // maxNonAdjacentSum([2, 7, 9, 3, 4])   // => 15, because 2 + 9 + 4
 // maxNonAdjacentSum([4,2,1,6])         // => 10, because 4 + 6 
-function maxNonAdjacentSum(nums) {
-    if (!nums.length) return 0;
+function maxNonAdjacentSum(nums, memo = {}) {
+    // if (!nums.length) return 0;
+    // if (nums.length === 1) return nums[0];
+    // const maxSums = nums.slice();
+    // maxSums[1] = Math.max(nums[0], nums[1]);
+    // for (let i = 2; i < nums.length; i++) {
+    //     maxSums[i] = Math.max(nums[i] + maxSums[i - 2], maxSums[i-1]);
+    // }
+    // return maxSums[maxSums.length - 1];
+
+    if (nums.length === 0) return 0;
     if (nums.length === 1) return nums[0];
-    const maxSums = nums.slice();
-    maxSums[1] = Math.max(nums[0], nums[1]);
-    for (let i = 2; i < nums.length; i++) {
-        maxSums[i] = Math.max(nums[i] + maxSums[i - 2], maxSums[i-1]);
+    if (nums.length in memo) return memo[nums.length];
+    const sums = [];
+    for (let i=0; i < nums.length; i++) {
+        sums.push(nums[i] + maxNonAdjacentSum(nums.slice(i+2), memo));
     }
-    return maxSums[maxSums.length - 1];
+
+    memo[nums.length] = Math.max(...sums);
+    return memo[nums.length];
+
 }
 
 
