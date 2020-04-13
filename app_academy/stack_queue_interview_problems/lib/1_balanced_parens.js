@@ -75,8 +75,73 @@
 // -----------
 // Let's code!
 // -----------
-function balancedParens(str) {
 
+// ONLY PARENTHESIS:
+// function balancedParens(str) {
+//     if (str.length === 0) return true;
+//     if (str.length % 2 === 1) return false;
+//     if (str[0] === ')' || str[str.length - 1] === '(') return false;
+//     let openCount = 1;
+//     let closedCount = 0;
+//     for (let i=1; i<str.length; i++) {
+//         if (str[i] === '(') openCount += 1;
+//         else closedCount += 1;
+//     }
+//     return openCount === closedCount;
+// }
+
+// ONLY PARENTHESIS AND TEXT:
+// function balancedParens(str) {
+//     const stack = [];
+//     for (let i=0; i<str.length; i++) {
+//         if (str[i] === '(') stack.push('(');
+//         else if (str[i] === ')') {
+//             if (stack.length === 0) return false;
+//             stack.pop();
+//         }
+//     } 
+//     return stack.length === 0;
+// }
+
+// SAME AS ABOVE (PARENTHESIS AND TEXT ONLY) OPTIMIZED FOR O(1) CONSTANT SPACE
+// function balancedParens(str) {
+//     
+//     let seen = false;
+//     let counter = 0;
+
+//     for (let i=0; i<str.length; i++) {
+//         if (!seen && (str[i] === '(' || str[i] === ')')) {
+//             if (str[i] === ')') return false;
+//             counter += 1;
+//             seen = true;
+//             continue;
+//         }
+//         if (str[i] === '(') counter += 1;
+//         else if (str[i] === ')') {
+//             if (counter === 0) return false;
+//             counter -= 1;
+//         }
+//     } 
+//     return counter === 0;
+
+// } 
+
+function balancedParens(str) {
+    const stack = [];
+    const openParens = "({[";
+    const closedParens = ")}]";
+    const match = {')': '(', ']': '[', '}': '{'};
+    
+    for (let i=0; i<str.length; i++) {
+        let char = str[i];
+        if (openParens.includes(char)) stack.push(char);
+        else if (closedParens.includes(char)) {
+            if (stack.length === 0 || match[char] !== stack.pop()) {
+                return false;
+            }
+        }
+    }
+    return stack.length === 0;
 }
 
 exports.balancedParens = balancedParens;
