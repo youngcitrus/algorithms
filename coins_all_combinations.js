@@ -9,7 +9,7 @@ function coinCombinations(coins, amount) {
         newCombinations.forEach((combo) => {
             results.push([coins[i]].concat(combo));
         })
-        }
+      }
     }
     return results;
 }

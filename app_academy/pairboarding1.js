@@ -27,6 +27,7 @@ function solution2(arr, N) {
     return result;
   }
   
+  
   const test1 = [4,4,2];
   const test2 = [1,6,2,2,5];
   const test3 = [1];

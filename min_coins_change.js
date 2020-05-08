@@ -41,7 +41,7 @@ const allOptions = function(arr, target) {
       }
   
     }
-  
+    console.log(result);
     return result;
   };
   
