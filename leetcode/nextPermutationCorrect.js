@@ -35,4 +35,4 @@ function reverse(arr, start) {
     return arr;
 }
 
-console.log(nextPermutation([1,1]))
+console.log(nextPermutation([1,2,3]))
