@@ -8,7 +8,7 @@ var romanToInt = function(s) {
                 "C": 100,
                 "D": 500,
                 "M": 1000
-    }
+    };
     for (let i=0; i<s.length; i++) {
         if (i === s.length - 1) {
             sum += hash[s[i]];
@@ -32,7 +32,7 @@ var romanToInt = function(s) {
                 "C": 100,
                 "D": 500,
                 "M": 1000
-    }
+    };
    let sum = hash[s[s.length - 1]];
     for (let i = s.length - 2; i >= 0; i--) {
         if (hash[s[i]] < hash[s[i+1]]) {
