@@ -1,0 +1,12 @@
+<ul id="cats">
+    I like cats.
+</ul>
+
+<script>
+  window.setTimeout( () => {
+    const ul = document.getElementById("cats");
+    const li = document.createElement("li");
+    li.textContent = "This is injected by JavaScript";
+    ul.appendChild(li);
+  }, 1000);
+</script>
