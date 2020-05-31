@@ -14,3 +14,6 @@ var subarraySum = function(nums, k) {
 };
 
 console.log(subarraySum([0,0,0], 0));
+console.log(subarraySum([1,1,1,0,2], 2));
+
+// https://leetcode.com/problems/subarray-sum-equals-k/
