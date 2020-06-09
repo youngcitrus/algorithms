@@ -23,3 +23,5 @@ var canJump = function(nums) {
     }
     return lastPos === 0;
 };
+
+//https://leetcode.com/problems/jump-game
