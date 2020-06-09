@@ -63,22 +63,60 @@ var widthOfBinaryTree = function(root) {
     while (queue.length) {
         
         let length = queue.length;
-        let nextLevel = [];
+        let positions = [];
         
         for (let i=0; i<length; i++) {
             let [current, pos] = queue.shift();
-            
-            if (current.left) nextLevel.push([current.left, pos*2]);
-            if (current.right) nextLevel.push([current.right, pos*2 + 1]);
+            positions.push(pos)
+            if (current.left) queue.push([current.left, pos*2]);
+            if (current.right) queue.push([current.right, pos*2 + 1]);
         }
         
         if (nextLevel.length === 0) break;
-        let width = nextLevel[nextLevel.length - 1][1] - nextLevel[0][1] + 1;
+        let width = positions[positions.length - 1] - positions[0] + 1;
         maxWidth = Math.max(maxWidth, width);
         queue = nextLevel;
         // console.log(nextLevel)
     }
     
     return maxWidth;
+    
+};
+
+// passes all test cases
+
+var widthOfBinaryTree = function(root) {
+    let maxWidth = 0
+    const queue = [{ node: root, pos: 0 }]
+    
+    while (queue.length) {
+        let len = queue.length
+        const positions = []
+
+        while (len--) {
+            const { node, pos } = queue.shift()
+            
+            positions.push(pos)
+            
+            if (node.left) {
+                queue.push({
+                    node: node.left,
+                    pos: 2 * pos
+                })
+            }
+            
+            if (node.right) {
+                queue.push({
+                    node: node.right,
+                    pos: 2 * pos + 1
+                })
+            }
+        }
+        
+        const levelWidth = positions.length === 1 ? 1 : positions[positions.length - 1] - positions[0] + 1
+        maxWidth = Math.max(maxWidth, levelWidth)
+    }
+    
+    return maxWidth
     
 };
