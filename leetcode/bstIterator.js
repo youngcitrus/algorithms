@@ -30,3 +30,6 @@ BSTIterator.prototype.next = function() {
 BSTIterator.prototype.hasNext = function() {
     return this.pointer < this.values.length;
 };
+
+
+// https://leetcode.com/problems/binary-search-tree-iterator/
