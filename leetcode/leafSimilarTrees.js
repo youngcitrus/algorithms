@@ -20,3 +20,5 @@ function arraysAreEqual(array1, array2) {
     }
     return true;
 }
+
+// https://leetcode.com/problems/leaf-similar-trees/
