@@ -4,10 +4,6 @@ var BSTIterator = function(root) {
     if (!root) return;
     
     this._inorder(root);
-    
-    
-    
-    // console.log(this.values)
 };
 
 BSTIterator.prototype._inorder = function(root) {
