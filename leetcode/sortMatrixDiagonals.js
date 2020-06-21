@@ -34,5 +34,4 @@ function sortOneDiagonal(matrix, row, col) {
         newRow += 1;
         newCol += 1;
     }
-    
 }
