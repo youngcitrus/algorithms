@@ -14,4 +14,4 @@ var maxProduct = function(nums) {
     
 };
 
-//https://leetcode.com/problems/maximum-product-subarray/submissions/
+// https://leetcode.com/problems/maximum-product-subarray/submissions/
