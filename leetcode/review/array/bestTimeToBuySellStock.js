@@ -12,3 +12,5 @@ var maxProfit = function(prices) {
     }
     return greatestDiff;
 };
+
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
