@@ -1,0 +1,76 @@
+Sets:
+No duplicates
+Not ordered
+Implemented by a hash table, search: hash an element and look it up
+constant time to check membership
+// does something exist in the set?
+
+// Breadth First Traversal
+
+Create a visited set to store visited nodes
+Create a queue, put the starting node in the queue
+While the queue is not empty
+    dequeue the first node
+    check if it's been visited
+    if not, mark it as visited
+    DO THE THING
+    Then put all the neighbors in the back of the queue
+
+Queues are often implemented with a linked list, instead of an array
+bc with large Ns, popping off front of queue is O(1) with linked list
+vs O(n) to unshift with an array
+
+function bft(startingNode) {
+    const visited = new Set();
+    const queue = [startingNode];
+    while (queue.length > 0) {
+        let node = queue.shift();
+        if(!visited.has(node)) {
+            visited.add(node);
+            neighbors = adjList[node];
+        }
+
+        for (let neighbor of neighbors) {
+            queue.push(neighbor);
+        }
+    }
+}
+
+adjList = {
+    0: new Set([1,3,8])
+}
+constant lookup with sets, so can check if nodes are connected ^
+And only unique values in the set, so no redundant edges
+
+//BFS gets shortest path
+
+
+DFS just change queue to stack
+Pop the end, instead of a shift
+
+function dft(startingNode) {
+    const visited = new Set();
+    const stack = [startingNode];
+    while (stack.length > 0) {
+        let node = stack.pop();
+        if(!visited.has(node)) {
+            visited.add(node);
+            neighbors = adjList[node];
+        }
+
+        for (let neighbor of neighbors) {
+            stack.push(neighbor);
+        }
+    }
+}
+
+Often used to solve maze
+
+check if node has been visited
+if not:
+    add it to visited
+    call dft on each child
+
+
+Recursion is O(n) space, for stack frames - the depth of the stack
+Optimizing tail end recursion?

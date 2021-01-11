@@ -6,4 +6,4 @@ var minCostClimbingStairs = function(cost) {
         dp[i] = Math.min(dp[i-1] + cost[i], dp[i-2] + cost[i]);
     }
     return Math.min(dp[dp.length-2], dp[dp.length-1]);
-};
+};  
